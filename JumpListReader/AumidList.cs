@@ -14,7 +14,7 @@ namespace JumpListReader
 
             if (list == null) Refresh();
 
-            return list.GetValueOrDefault(path);
+            return list.GetValueOrDefault(path.ToLower());
         }
 
         private void ValidatePath(string path)
@@ -38,8 +38,8 @@ namespace JumpListReader
             foreach (var app in (IKnownFolder)appsFolder)
             {
                 var appUserModelID = app.ParsingName;
-                var appPath = app.Properties.System.Link.TargetParsingPath.Value;
-                var packagePath = app.Properties.GetProperty<string>("System.AppUserModel.PackageInstallPath").Value;
+                var appPath = app.Properties.System.Link.TargetParsingPath.Value?.ToLower();
+                var packagePath = app.Properties.GetProperty<string>("System.AppUserModel.PackageInstallPath").Value?.ToLower();
 
                 if (appPath != null && !apps.ContainsKey(appPath))
                 {

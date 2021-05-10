@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Royosef</Authors>
+    <Company>Codevelop</Company>
+    <Description>Find and read apps' jump lists in Windows.</Description>
+    <PackageProjectUrl>https://github.com/Royosef/JumpListReader</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Royosef/JumpListReader</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
