@@ -38,12 +38,16 @@ namespace JumpListReader
 
         private AutomaticDestination GetAutomaticDestinations(string appId)
         {
-            var automaticListFile = GetAutomaticDestinationsFile(appId);
-
-            if (automaticListFile != null)
+            try
             {
-                return global::JumpList.JumpList.LoadAutoJumplist(automaticListFile);
+                var automaticListFile = GetAutomaticDestinationsFile(appId);
+
+                if (automaticListFile != null)
+                {
+                    return global::JumpList.JumpList.LoadAutoJumplist(automaticListFile);
+                }
             }
+            catch { }
 
             return null;
         }
@@ -59,12 +63,16 @@ namespace JumpListReader
 
         private CustomDestination GetCustomDestinations(string appId)
         {
-            var customListFile = GetCustomDestinationsFile(appId);
-
-            if (customListFile != null)
+            try
             {
-                return global::JumpList.JumpList.LoadCustomJumplist(customListFile);
+                var customListFile = GetCustomDestinationsFile(appId);
+
+                if (customListFile != null)
+                {
+                    return global::JumpList.JumpList.LoadCustomJumplist(customListFile);
+                }
             }
+            catch { }
 
             return null;
         }
