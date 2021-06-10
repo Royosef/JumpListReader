@@ -7,7 +7,8 @@
     <Description>Find and read apps' jump lists in Windows.</Description>
     <PackageProjectUrl>https://github.com/Royosef/JumpListReader</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Royosef/JumpListReader</RepositoryUrl>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

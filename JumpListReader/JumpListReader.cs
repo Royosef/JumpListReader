@@ -1,7 +1,9 @@
 ﻿using JumpList.Automatic;
 using JumpList.Custom;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace JumpListReader
 {
@@ -21,9 +23,13 @@ namespace JumpListReader
 
             if (jumpList.AppUserModelId == null) return null;
 
-            jumpList.AppId = AppIdCalculator.Calculate(jumpList.AppUserModelId);
-            jumpList.AutomaticDestination = GetAutomaticDestinations(jumpList.AppId);
-            jumpList.CustomDestination = GetCustomDestinations(jumpList.AppId);
+            jumpList.AppIds = new List<string> { 
+                AppIdCalculator.Calculate(jumpList.AppUserModelId),
+                AppIdCalculator.Calculate(Path.GetFileNameWithoutExtension(exePath))
+            };
+
+            jumpList.AutomaticDestinations = jumpList.AppIds.Select(GetAutomaticDestinations).Where(x => x != null);
+            jumpList.CustomDestinations = jumpList.AppIds.Select(GetCustomDestinations).Where(x => x != null);
 
             return jumpList;
         }
